@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: time-check
+  namespace: devops
+spec:
+  containers:
+  - name: time-check
+    image: busybox:latest
+    command: ["/bin/sh", "-c", "while true; do date >> /opt/dba/time/time-check.log; sleep $TIME_FREQ; done"]
+    env:
+    - name: TIME_FREQ
+      valueFrom:
+        configMapKeyRef:
+          name: time-config
+          key: TIME_FREQ
+    volumeMounts:
+      - name: log-volume
+        mountPath: "/opt/dba/time"     
+  volumes:
+    - name: log-volume
+      persistentVolumeClaim:
+        claimName: pvc-log
