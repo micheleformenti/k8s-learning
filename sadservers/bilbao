@@ -1,0 +1,11 @@
+kubectl get pods
+kubetl describe pod nginx
+# node affinity failing
+kubectl get nodes --show-labels
+kubectl label node node1 disk=ssd
+kubectl rollout restart deployment nginx-deployment
+kubetl describe pod nginx
+# insufficient memory
+vi manifest.yml 
+# change request/limit to 200Mi
+kubectl apply -f manifest.yaml 
