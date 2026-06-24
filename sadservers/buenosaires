@@ -1,0 +1,3 @@
+kubectl logs logshipper-597f84bf4f-6ssjq --> RBAC missing
+kubectl create role logshipper --verb=get,list --resource=pods,pods/log -n default
+kubectl create rolebinding logshipperbind --role=logshipper --serviceaccount=default:logshipper-sa -n default
