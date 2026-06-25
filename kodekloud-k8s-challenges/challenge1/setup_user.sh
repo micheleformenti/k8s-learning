@@ -4,6 +4,6 @@ kubectl config set-credentials martin \
 
 kubectl config set-context developer \
   --user=martin \
-  --namespace=developer
+  --namespace=development
 
 kubectl config use-context developer
