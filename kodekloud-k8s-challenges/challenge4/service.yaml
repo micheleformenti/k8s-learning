@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-cluster-service
+spec:
+  type: ClusterIP
+  ports:
+    - name: client
+      targetPort: 6379
+      port: 6379
+    - name: gossip
+      targetPort: 16379
+      port: 16379 
+  selector:
+      app: redis-cluster
